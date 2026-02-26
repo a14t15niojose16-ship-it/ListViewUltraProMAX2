@@ -1,0 +1,34 @@
+name: Build AI2 Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Clone App Inventor Sources
+        run: git clone https://github.com/mit-cml/appinventor-sources.git ai2
+
+      - name: Copy extension files
+        run: |
+          mkdir -p ai2/appinventor/components/src/com/ultrapro/listview
+          cp -r src/com/ultrapro/listview/* ai2/appinventor/components/src/com/ultrapro/listview/
+          cp component.json ai2/appinventor/components/src/com/ultrapro/listview/
+
+      - name: Build extension
+        run: |
+          cd ai2/appinventor
+          ant extensions
+
+      - name: Upload AIX
+        uses: actions/upload-artifact@v3
+        with:
+          name: ListViewUltraPro
+          path: ai2/appinventor/components/build/extensions/*.aix
