@@ -25,10 +25,10 @@ jobs:
       - name: Build extension
         run: |
           cd ai2/appinventor
-          ant extensions
-
+          ant extensions 
+          
       - name: Upload AIX
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4 
         with:
           name: ListViewUltraPro
           path: ai2/appinventor/components/build/extensions/*.aix
