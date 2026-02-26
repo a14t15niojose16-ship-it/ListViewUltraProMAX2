@@ -1,1 +1,10 @@
-
+{
+  "name": "ListViewUltraPro",
+  "type": "AndroidViewComponent",
+  "package_name": "com.ultrapro.listview",
+  "version": "1",
+  "category": "User Interface",
+  "helpUrl": "",
+  "description": "ListView Ultra PRO MAX 2.0",
+  "iconName": ""
+}
